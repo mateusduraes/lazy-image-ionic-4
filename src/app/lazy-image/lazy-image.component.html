@@ -1,0 +1,19 @@
+<div class="lazy-image-container" 
+  [style.background-color]="errorBackgroundColor"
+  [style.color]="errorColor"
+>
+  <ion-img [ngClass]="{'hide-image': loadingFinalImage, 'show-image': !loadingFinalImage}" [hidden]="hasErrorFinalImage && hasErrorPlaceholder"
+    [src]="finalImage"
+    (ionError)="errorFinalImage()" (ionImgDidLoad)="didLoadFinalImage()">
+  </ion-img>
+  
+  <ion-img [ngClass]="{'hide-image': !loadingFinalImage, 'show-image': loadingFinalImage}" [hidden]="hasErrorPlaceholder"
+    [src]="placeholderImage"
+    (ionError)="errorPlaceholderImage()">
+  </ion-img>
+
+  <div class="error" *ngIf="hasErrorFinalImage && hasErrorPlaceholder && showError">    
+    <ion-icon *ngIf="showErrorIcon" [name]="errorIcon"></ion-icon>
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>

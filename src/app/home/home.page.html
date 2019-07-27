@@ -1,14 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Lazy Image using ion-img
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <div class="my-image">
+    
+    <app-lazy-image *ngFor="let image of images"
+      [finalImage]="image.finalImage"
+      [placeholderImage]="image.placeholderImage">
+    </app-lazy-image>
+
   </div>
 </ion-content>
